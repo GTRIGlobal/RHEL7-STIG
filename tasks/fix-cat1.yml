@@ -333,7 +333,7 @@
       regexp: (?i)^#?x11forwarding
       line: X11Forwarding yes
       validate: sshd -t -f %s
-  notify: restart sshd
+  notify: restart ssh
   tags:
       - cat1
       - high
