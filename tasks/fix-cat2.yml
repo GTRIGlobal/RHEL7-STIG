@@ -748,12 +748,14 @@
       - medium
       - patch
       - RHEL-07-021120
-
+      
 - name: "MEDIUM | RHEL-07-021300 | PATCH | Kernel core dumps must be disabled unless needed."
   service:
     name: kdump
     enabled: no
     state: stopped
+  register: kdump_service
+  failed_when: kdump_service.failed and ('Could not find the requested service kdump' not in kdump_service.msg)
   tags:
       - cat2
       - medium
